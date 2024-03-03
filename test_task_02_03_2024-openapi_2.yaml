@@ -1,0 +1,58 @@
+openapi: "3.0.3"
+info:
+  title: "test_task_02_03_2024 API"
+  description: "test_task_02_03_2024 API"
+  version: "1.0.0"
+servers:
+  - url: "https://test_task_02_03_2024"
+tags:
+  - name: "Users"
+    description: "Class for user registration"
+paths:
+  /users:
+    post:
+      summary: "Register a new user"
+      description: ""
+      operationId: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RegistrationResponse"
+components:
+  schemas:
+    RegistrationRequest:
+      type: "object"
+      properties:
+        login:
+          type: "string"
+        password:
+          type: "string"
+        email:
+          type: "string"
+        userRole:
+          type: "string"
+          enum:
+            - "ADMIN"
+            - "USER"
+    RegistrationResponse:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        createdDate:
+          type: "string"
+          format: "date-time"
+        login:
+          type: "string"
+        email:
+          type: "string"

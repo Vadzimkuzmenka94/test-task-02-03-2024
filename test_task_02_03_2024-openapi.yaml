@@ -1,0 +1,110 @@
+openapi: "3.0.3"
+info:
+  title: "test_task_02_03_2024 API"
+  description: "test_task_02_03_2024 API"
+  version: "1.0.0"
+servers:
+  - url: "https://test_task_02_03_2024"
+tags:
+  - name: "Articles"
+paths:
+  /articles:
+    post:
+      summary: "Create a new article"
+      description: ""
+      operationId: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ArticleRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ArticleResponse"
+    get:
+      summary: "Get all articles"
+      description: ""
+      operationId: ""
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+            default: "0"
+        - name: "size"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+            default: "10"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ArticleResponse"
+  /articles/statistic:
+    get:
+      summary: "Get article statistics"
+      description: ""
+      operationId: ""
+      parameters:
+        - name: "page"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+            default: "0"
+        - name: "size"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+            default: "10"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StatisticResponse"
+components:
+  schemas:
+    ArticleRequest:
+      type: "object"
+      properties:
+        author:
+          type: "string"
+        title:
+          type: "string"
+        content:
+          type: "string"
+    ArticleResponse:
+      type: "object"
+      properties:
+        author:
+          type: "string"
+        title:
+          type: "string"
+        content:
+          type: "string"
+    StatisticResponse:
+      type: "object"
+      properties:
+        date:
+          type: "string"
+          format: "date-time"
+        articleCount:
+          type: "integer"
+          format: "int64"
