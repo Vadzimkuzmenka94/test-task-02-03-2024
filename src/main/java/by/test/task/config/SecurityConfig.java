@@ -65,9 +65,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sessionManagement -> sessionManagement
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                .cors(cors -> {})
+                .cors(cors -> {
+                })
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers( "/signin", "/swagger-ui/**").permitAll()
+                        .requestMatchers("/signin", "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
                         .requestMatchers(HttpMethod.GET, "/articles/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/articles").authenticated()

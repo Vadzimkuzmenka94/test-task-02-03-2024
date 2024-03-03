@@ -1,7 +1,6 @@
 import by.test.task.dto.signIn.SignInRequest;
 import by.test.task.orm.UserEntity;
 import by.test.task.orm.UserRepository;
-import by.test.task.security.AuthenticationUserDetails;
 import by.test.task.security.AuthenticationUserDetailsService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,8 +12,8 @@ import java.util.Optional;
 
 import static constants.TestConstants.EMAIL;
 import static constants.TestConstants.PASSWORD;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,15 +27,15 @@ public class AuthenticationUserDetailsServiceTest {
 
     @Test
     void shouldCreateCustomUserDetails() {
-        SignInRequest req = new SignInRequest();
+        var req = new SignInRequest();
         req.setEmail(EMAIL);
         req.setPassword(PASSWORD);
-        UserEntity user = new UserEntity();
+        var user = new UserEntity();
         user.setEmail(req.getEmail());
         user.setPassword(req.getPassword());
 
         when(repository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
-        AuthenticationUserDetails result =
+        var result =
                 customUserDetailsService.createCustomUserDetailsByEmail(user.getEmail());
 
         assertNotNull(result);

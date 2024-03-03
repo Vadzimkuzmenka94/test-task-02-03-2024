@@ -8,18 +8,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-
-import java.util.List;
 
 import static constants.TestConstants.EMAIL;
 import static constants.TestConstants.PASSWORD;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
@@ -33,13 +27,13 @@ class SignInServiceImplementationTest {
 
     @Test
     void shouldReturnAuthentication_whenGetNewAuthenticationWithValidCredentials() {
-        MockHttpSession httpSession = new MockHttpSession();
+        var httpSession = new MockHttpSession();
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setSession(httpSession);
         var signInRequest = new SignInRequest();
         signInRequest.setEmail(EMAIL);
         signInRequest.setPassword(PASSWORD);
-        WebAuthenticationDetails authenticationDetails = new WebAuthenticationDetails(request);
+        var authenticationDetails = new WebAuthenticationDetails(request);
 
         ArgumentCaptor<UsernamePasswordAuthenticationToken> captor =
                 ArgumentCaptor.forClass(UsernamePasswordAuthenticationToken.class);
@@ -55,9 +49,9 @@ class SignInServiceImplementationTest {
 
     @Test
     void shouldReturnSecurityContext_whenCreateNewContextWithAuthentication() {
-        UsernamePasswordAuthenticationToken authentication =
+        var authentication =
                 new UsernamePasswordAuthenticationToken(EMAIL, PASSWORD);
-        SecurityContext newContext = signInService.createNewContext(authentication);
+        var newContext = signInService.createNewContext(authentication);
         assertEquals(authentication, newContext.getAuthentication());
     }
 }

@@ -27,14 +27,14 @@ class ArticleServiceTest {
     @Test
     void createArticle_ValidRequest_ReturnsCreatedArticle() {
 
-        ArticleRequest request = new ArticleRequest();
-        ArticleEntity createdArticle = new ArticleEntity();
+        var request = new ArticleRequest();
+        var createdArticle = new ArticleEntity();
 
         Mockito.when(articleMapper.toEntity(request)).thenReturn(createdArticle);
         Mockito.when(articleRepository.save(createdArticle)).thenReturn(createdArticle);
 
 
-        ArticleEntity actualArticle = articleService.createArticle(request);
+        var actualArticle = articleService.createArticle(request);
 
         assertEquals(createdArticle, actualArticle);
     }

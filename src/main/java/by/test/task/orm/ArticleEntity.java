@@ -3,14 +3,12 @@ package by.test.task.orm;
 import by.test.task.core.orm.UuidEntity;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
-import java.util.UUID;
 
 import static java.time.OffsetDateTime.now;
 

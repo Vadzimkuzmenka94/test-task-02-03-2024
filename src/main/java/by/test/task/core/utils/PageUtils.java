@@ -22,7 +22,7 @@ public final class PageUtils {
         int offset = (int) pageable.getOffset();
         int size = list.size();
         int to = offset + Math.min(pageable.getPageSize(), size - offset);
-        return new PageImpl<>(list.subList(offset, to), pageable, (long) size);
+        return new PageImpl<>(list.subList(offset, to), pageable, size);
     }
 }
 

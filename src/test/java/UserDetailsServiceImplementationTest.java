@@ -7,8 +7,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import static constants.TestConstants.EMAIL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,12 +24,12 @@ class UserDetailsServiceImplementationTest {
 
     @Test
     void shouldLoadUserByEmail() {
-        UserEntity testUser = new UserEntity();
-        AuthenticationUserDetails expectedUserDetails = new AuthenticationUserDetails(testUser);
+        var testUser = new UserEntity();
+        var expectedUserDetails = new AuthenticationUserDetails(testUser);
         when(customUserDetailsService.createCustomUserDetailsByEmail(EMAIL)).thenReturn(
                 expectedUserDetails);
 
-        UserDetails result = userDetailsService.loadUserByUsername(EMAIL);
+        var result = userDetailsService.loadUserByUsername(EMAIL);
         verify(customUserDetailsService, times(1)).createCustomUserDetailsByEmail(EMAIL);
 
         assertEquals(expectedUserDetails, result);

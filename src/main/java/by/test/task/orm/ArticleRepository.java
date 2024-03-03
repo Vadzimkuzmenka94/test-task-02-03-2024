@@ -31,15 +31,18 @@ public interface ArticleRepository extends UuidRepository<ArticleEntity> {
      * @param endDate   the end date of the range
      * @return a list of StatisticResponse objects representing daily article count for the last week
      */
-    @Query("SELECT NEW by.test.task.dto.statistic.StatisticResponse(DATE_TRUNC('day', a.createdDate), COUNT(a)) " +
-            "FROM ArticleEntity a " +
-            "WHERE a.deletedDate IS NULL " +
-            "AND a.createdDate >= :startDate " +
-            "AND a.createdDate < :endDate " +
-            "GROUP BY DATE_TRUNC('day', a.createdDate) " +
-            "ORDER BY DATE_TRUNC('day', a.createdDate) DESC")
+    @Query("""
+        select NEW by.test.task.dto.statistic.StatisticResponse(DATE_TRUNC('day', a.createdDate), COUNT(a))
+        from ArticleEntity a
+        where a.deletedDate is null 
+        and a.createdDate >= :startDate
+        and a.createdDate < :endDate
+        group by DATE_TRUNC('day', a.createdDate)
+        order by DATE_TRUNC('day', a.createdDate) desc 
+        """)
     List<StatisticResponse> getDailyArticleCountForLastWeek(@Param("startDate") OffsetDateTime startDate,
                                                             @Param("endDate") OffsetDateTime endDate);
+
 
 
 }

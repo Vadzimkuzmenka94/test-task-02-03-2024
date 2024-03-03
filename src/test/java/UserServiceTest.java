@@ -31,14 +31,14 @@ class UserServiceTest {
 
     @Test
     void registerUser_SuccessfulRegistration() {
-        RegistrationRequest request = new RegistrationRequest(LOGIN,PASSWORD , EMAIL, UserRole.USER);
-        UserEntity newUser = new UserEntity(LOGIN, PASSWORD, EMAIL,  UserRole.USER, null);
+        var request = new RegistrationRequest(LOGIN,PASSWORD , EMAIL, UserRole.USER);
+        var newUser = new UserEntity(LOGIN, PASSWORD, EMAIL,  UserRole.USER, null);
 
         Mockito.when(userRepository.existsByEmail(Mockito.anyString())).thenReturn(false);
         Mockito.when(mapper.toEntity(request)).thenReturn(newUser);
         Mockito.when(userRepository.save(newUser)).thenReturn(newUser);
 
-        UserEntity registeredUser = userService.registerUser(request);
+        var registeredUser = userService.registerUser(request);
 
         Assertions.assertEquals(newUser.getEmail(), registeredUser.getEmail());
         Mockito.verify(userRepository, Mockito.times(1)).existsByEmail(EMAIL);
@@ -49,11 +49,11 @@ class UserServiceTest {
 
     @Test
     void registerUser_UserWithEmailAlreadyExists_ThrowsException() {
-        RegistrationRequest request = new RegistrationRequest(LOGIN, PASSWORD, EMAIL, UserRole.USER);
+        var request = new RegistrationRequest(LOGIN, PASSWORD, EMAIL, UserRole.USER);
 
         Mockito.when(userRepository.existsByEmail(Mockito.anyString())).thenReturn(true);
 
-        BaseException exception = assertThrows(BaseException.class, () -> userService.registerUser(request));
+        var exception = assertThrows(BaseException.class, () -> userService.registerUser(request));
         assertEquals("Entity User already exists", exception.getMessage());
 
         Mockito.verify(userRepository, Mockito.times(1)).existsByEmail(EMAIL);
