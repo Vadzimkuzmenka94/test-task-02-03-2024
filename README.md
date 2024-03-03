@@ -10,10 +10,11 @@ Additionally, you are required to develop an endpoint for statistics that would 
 - The endpoint should return count of published articles on daily bases for the 7 days
 
 Please also write tests to verify that your code works.!
-[tests.png](..%2F..%2FDesktop%2Ftests.png)
-![2024-03-03_03-07.png](..%2F..%2FDesktop%2F2024-03-03_03-07.png)
-![registration.png](..%2F..%2FDesktop%2Fregistration.png)
-![create article with exception.png](..%2F..%2FDesktop%2Fcreate%20article%20with%20exception.png)
-![signin.png](..%2F..%2FDesktop%2Fsignin.png)
-![create article.png](..%2F..%2FDesktop%2Fcreate%20article.png)
-![page.png](..%2F..%2FDesktop%2Fpage.png)
+
+![2024-03-03_03-07](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/f06663d0-ea56-4a92-8b7c-850b3bf1388a)
+![page](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/eb302f7f-2643-40dc-9313-ba4ccfdeda07)
+![create article](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/51062b45-5494-47b3-9bff-4d2a3af59fca)
+![signin](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/bdd9c13e-a8f3-422c-8a49-53811f597ccb)
+![create article with exception](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/933ca493-31f8-4347-a308-c6847b5fdd06)
+![tests](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/50e6baaa-46bd-4de7-b205-8099a5ef5dbf)
+![registration](https://github.com/Vadzimkuzmenka94/test-task-02-03-2024/assets/85760475/2eaa8591-aa9e-42fb-85cd-4d661a66ad17)
